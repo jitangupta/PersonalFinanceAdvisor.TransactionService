@@ -54,7 +54,8 @@ app.UsePathBase("/pfa.transaction.service");
 app.UseSwagger();
 app.UseSwaggerUI(setup =>
 {
-    setup.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    var swaggerJsonBasePath = string.IsNullOrWhiteSpace(setup.RoutePrefix) ? "." : "..";
+    setup.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "v1");
 
 });
 
